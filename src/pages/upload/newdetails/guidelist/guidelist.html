@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>业务指南</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="guideSonList">
+    <h4 class="textCenter">{{guideSonList.Name}}</h4>
+    <div *ngFor="let item of guideSonList.SubList" class="bottsin">
+      <div (click)="goDetails(item.GuideSonId)">{{item.Title}}</div>
+    </div>
+  </div>
+
+</ion-content>

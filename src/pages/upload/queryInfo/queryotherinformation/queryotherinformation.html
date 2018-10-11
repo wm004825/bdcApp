@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>查档服务-机构查档</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bgf2f2f2" padding>
+
+
+  <ion-segment [(ngModel)]="initString.pet" (ionChange)="petChanged()" class="myTabs marginBottom3">
+    <ion-segment-button value="{{item.name}}" *ngFor="let item of initString.tabA" [ngClass]="{active:initString.pet==item.name}">{{item.name}}</ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="initString.pet">
+    <ion-list *ngSwitchCase="initString.grdcxName">
+      <ion-card class="myCard">
+        <tip title="查询人信息"></tip>
+        <beforename [form]="form" [query]=1 [formErrors]="formErrors"></beforename>
+      </ion-card>
+
+      <ion-card class="myCard" *ngIf="personalSelect">
+        <tip [selectData]="personalSelect"></tip>
+      </ion-card>
+
+      <!-- <button ion-button block class="marginTop2" (click)="goQuery()" [disabled]="!form.valid">{{initString.grdcxName}}</button> -->
+      <button ion-button block class="marginTop2" (click)="goQuery()">{{initString.grdcxName}}</button>
+      <button ion-button block class="marginTop2" (click)="queryHistory()">{{initString.cdjlName}}</button>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="initString.gkdcxName">
+      <ion-card class="myCard">
+        <querypublic [data]="queryotherinformationData" [queryIndex]=1 [query]="query"></querypublic>
+      </ion-card>
+
+      <ion-card class="myCard" *ngIf="publicSelect">
+        <tip [selectData]="publicSelect"></tip>
+      </ion-card>
+
+      <button ion-button block class="marginTop2" (click)="openQuery();">{{initString.gkdcxName}}</button>
+      <button ion-button block class="marginTop2" (click)="queryHistory()">{{initString.cdjlName}}</button>
+    </ion-list>
+  </div>
+</ion-content>

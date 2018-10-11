@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" class="flexContent"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>查档结果</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-scroll scrollX="true" scrollY="true" zoom="false" class="flexMain"> 
+    <div [innerHTML]="this.data | html" *ngIf="this.data" class="guideTable"></div>
+  </ion-scroll>
+</ion-content>

@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的业务</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="other()">
+        其他业务
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="newTitle">
+    <ion-item class="flexBox">
+      <div class="flex1Content colorff7f00">
+        <svg class="icon fontIcon" aria-hidden="true">
+          <use xlink:href="#icon-tishi" class="colorff7f00"></use>
+        </svg>
+        点击已有业务,可进行后续办理
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <ion-list class="myList" *ngFor="let item of mylist.Items">
+      <ion-grid class="listBox">
+        <ion-row>
+          <ion-col col-4 class="justify">业务名称: </ion-col>
+          <ion-col col-8><span class="colore28c41">{{item.ProjectName}}</span></ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="listBox" *ngFor="let person of item.Persons">
+        <ion-row>
+          <ion-col col-4 class="justify">{{person.RoleName}}: </ion-col>
+          <ion-col col-8>{{person.PersonName}}</ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="listBox">
+        <ion-row>
+          <ion-col col-4 class="justify">流 水 号: </ion-col>
+          <ion-col col-8>{{item.AppointmentNo}}</ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="listBox" *ngIf="item.Children!==null">
+        <ion-row>
+          <ion-col col-4 class="justify">批量业务: </ion-col>
+          <ion-col col-8>
+            <span>包含({{item.Children.length}})条</span>
+            <span class="wos">批量({{item.Children.length}})</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="listBox">
+        <ion-row>
+          <ion-col col-4 class="justify">创建时间: </ion-col>
+          <ion-col col-8>{{item.CreateDate}}</ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid class="listBox" *ngIf="item.AcceptDate">
+        <ion-row>
+          <ion-col col-4 class="justify">办理进度: </ion-col>
+          <ion-col col-8>已受理</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </div>
+
+  <!--上拉刷新 start -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--上拉刷新 end -->
+
+  <!--下滑加载数据 start-->
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!--下滑加载数据 end-->
+</ion-content>

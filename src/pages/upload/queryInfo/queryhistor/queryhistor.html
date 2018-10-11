@@ -1,0 +1,161 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" class="flexContent"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{initString.cdjlName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bgf2f2f2" padding>
+  <ion-segment [(ngModel)]="initString.pet" (ionChange)="petChanged()" class="myTabs marginBottom3">
+    <ion-segment-button value="{{item.name}}" *ngFor="let item of initString.headerTab" [ngClass]="{active:initString.pet==item.name}">{{item.name}}</ion-segment-button>
+  </ion-segment>
+
+  <!-- 个人查档和机构查档  start-->
+  <div [ngSwitch]='initString.pet'>
+    <div *ngIf="initString.index==0||initString.index==1">
+      <div *ngSwitchCase="initString.gkdcxName">
+        <ion-list *ngIf="listA.list.length!=0">
+          <ion-item *ngFor="let item of listA.list" (click)="goDetails()" >
+            <div class="flexBox">
+              <div class="flex1">
+                <p>查询号：{{item.QueryId}}</p>
+                <p>校验码：{{item.IdentityCode}}</p>
+                <p>查询时间：{{item.CreateDateTime}}</p>
+                <p>查档类型：{{item.FamilyId}}</p>
+              </div>
+              <div class="flexContent" *ngIf="(item.ResponseCode===1||item.ResponseCode===3)">
+                <button ion-button color="secondary">点击查看</button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <history [txt]="initString.gkdcxName" *ngIf="listA.historyType"></history>
+      </div>
+
+      <!-- 名下档的模块 -->
+      <div *ngSwitchCase="initString.mxdcxName">
+        <ion-list class="show-1" *ngIf="listB.list.length!=0">
+          <ion-item *ngFor="let item of listB.list" (click)="goDetails(item.IdentityCode)" >
+            <div class="flexBox">
+              <div class="flex1">
+                <p>查询号：{{item.QueryId}}</p>
+                <p>校验码：{{item.IdentityCode}}</p>
+                <p>查询时间：{{item.CreateDateTime}}</p>
+                <p *ngIf="item.FamilyId">查档类型：家庭档</p>
+              </div>
+              <div class="flexContent" *ngIf="(item.ResponseCode===1||item.ResponseCode===3)">
+                <button ion-button color="secondary">点击查看</button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <history [txt]="initString.mxdcxName" *ngIf="listB.historyType"></history>
+      </div>
+
+      <!-- 个人档的模块 -->
+      <div *ngSwitchCase="initString.grdcxName">
+        <ion-list *ngIf="listB.list.length!=0">
+          <ion-item *ngFor="let item of listB.list">
+            <div class="flexBox">
+              <div class="flex1">
+                <p>查询号：{{item.QueryId}}</p>
+                <p>校验码：{{item.IdentityCode}}</p>
+                <p>查询时间：{{item.CreateDateTime}}</p>
+                <p>查询人姓名：{{item.QueryUserName}}</p>
+                <p>查询人身份号：{{item.QueryUserIDNo}}</p>
+              </div>
+              <div class="flexContent" *ngIf="(item.ResponseCode===1||item.ResponseCode===3)">
+                <button ion-button color="secondary">点击查看</button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <history [txt]="initString.grdcxName" *ngIf="listB.historyType"></history>
+      </div>
+    </div>
+    <!-- 个人查档和机构查档  end-->
+
+    <!-- 查验查档 start -->
+    <div *ngIf="initString.index==2">
+      <div *ngSwitchCase="initString.cycdName">
+        <ion-list *ngIf="listA.list.length!=0">
+          <ion-item *ngFor="let item of listA.list">
+            <div class="flexBox">
+              <div class="flex1">
+                <p>类型：{{item.Message}}</p>
+                <p>查询码：{{item.IdentityCode}}</p>
+                <p>查询时间：{{item.CreateDateTime}}</p>
+              </div>
+              <div class="flexContent">
+                <button ion-button color="secondary">点击查看</button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <history [txt]="initString.cycdName" *ngIf="listA.historyType"></history>
+      </div>
+    </div>
+    <!-- 查验查档 end -->
+    <!-- 匿名查档 start -->
+    <div *ngIf="initString.index==3">
+      <div *ngSwitchCase="initString.grdcxName">
+        <ion-list *ngIf="listA.list.length!=0">
+          <ion-item *ngFor="let item of listA.list">
+            <div class="flexBox">
+              <div class="flex1">
+                <p>查询号：{{item.QueryId}}</p>
+                <p>校验码：{{item.IdentityCode}}</p>
+                <p>查询时间：{{item.CreateDateTime}}</p>
+                <p>查档类型：{{item.FamilyId}}</p>
+              </div>
+              <div class="flexContent" *ngIf="(item.ResponseCode===1||item.ResponseCode===3)">
+                <button ion-button color="secondary">点击查看</button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <history [txt]="initString.gkdcxName" *ngIf="listA.historyType"></history>
+      </div>
+
+      <div *ngSwitchCase="initString.jtdcxName">
+        <ion-list *ngIf="listB.list.length!=0">
+          <ion-item *ngFor="let item of listB.list">
+            <div class="flexBox">
+              <div class="flex1">
+                <p>查询号：{{item.QueryId}}</p>
+                <p>校验码：{{item.IdentityCode}}</p>
+                <p>查询时间：{{item.CreateDateTime}}</p>
+                <p>查档类型：{{item.FamilyId}}</p>
+              </div>
+              <div class="flexContent" *ngIf="(item.ResponseCode===1||item.ResponseCode===3)">
+                <button ion-button color="secondary">点击查看</button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <history [txt]="initString.jtdcxName" *ngIf="listB.historyType"></history>
+      </div>
+    </div>
+    <!-- 匿名查档 end -->
+  </div>
+  <!--上拉刷新 start -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--上拉刷新 end -->
+
+  <!--下滑加载数据 start-->
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!--下滑加载数据 end-->
+</ion-content>

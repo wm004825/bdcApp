@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{onlinehandlingEntity.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ul class="ul50">
+    <li class="flexBox" *ngFor="let item of onlinehandlingEntity.data;" (click)="goDetails(item.ProjectTag,onlinehandlingEntity.title)">
+      <div class="flex1Content">
+        {{item.ProjectTag}}
+      </div>
+    </li>
+  </ul>
+  <!--上拉刷新 start -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--上拉刷新 end -->
+</ion-content>

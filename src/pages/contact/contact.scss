@@ -1,0 +1,28 @@
+page-contact {
+    .personal {height: 14rem;background-image: url("../assets/imgs/banner_p.png");background-position: center center;background-size: cover;padding: 1.25rem 0;width: 100%; }
+    .personal .txt {color: white;}
+    .personal .title { font-size: 1.8rem;color: white;margin: .5rem 0 1rem;white-space: normal;}
+
+    .personal_list .item {
+      padding: 1.125rem 4.6rem;
+    }
+    .personal_list .item font {
+      vertical-align: .5rem;
+      padding-left: 1.526rem;
+    }
+    .list button {
+      display: inline-block;
+      width: 100%;
+      border-bottom: .1rem #e5e5e5 solid;
+      text-decoration: none;
+      color: black;
+    }
+    
+    .list-md .item-block .item-inner{
+      border-bottom: none;  
+    }
+     button.item-ios:not([detail-none]) .item-inner{
+      background-image: none;
+      border: none;
+     }
+}

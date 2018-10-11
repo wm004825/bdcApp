@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>相关部门</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row class=" box" [ngClass]="index%2 == 1?'bgfddcd4':'bgd0effc'" *ngFor="let item of department;let index = index" (click)="goDetails(item.Id)">
+    <ion-col col-8 align-self-baseline>
+      <h2 class="font16 marginTop2">{{item.Name}}</h2>
+      <p>点击查看部门简介</p>
+    </ion-col>
+    <ion-col col-4>
+      <img class="width8" [src]="index%2 == 1?'assets/imgs/InformationCenter.png':'assets/imgs/TradingCenter.png'" alt="">
+    </ion-col>
+  </ion-row>
+
+  <!--上拉刷新 start -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--上拉刷新 end -->
+</ion-content>

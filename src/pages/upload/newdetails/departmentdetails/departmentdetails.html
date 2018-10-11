@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>相关部门</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="intros">
+    <h4 class="title">{{intros.Name}}</h4>
+    <div *ngFor="let item  of intros.Infos">
+
+      <div class="bos flexBox" *ngIf="item.Title">{{item.Title}}</div>
+
+      <div [innerHTML]="item.Content"></div>
+      <img [src]="item.Img" alt="" *ngIf="item.Img"  />
+    </div>
+  </div> 
+</ion-content>

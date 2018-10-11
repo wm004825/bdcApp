@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon ios="ios-arrow-back" class="flexContent"></ion-icon>
+        返回
+      </button>
+    </ion-buttons>
+    <ion-title>{{addpeopleEntity.RoleName}}详情</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only (click)="addTemplate()">
+        模版
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <tip title="类型" [selectData]="addpeopleEntity.personType" background="#FFF" showIonic="" [ngClass]="this.addpeopleEntity.type=='check'?'pointer':''"></tip>
+  <tip title="证件类型" (onVoted)="onVoted();" [selectData]="addpeopleEntity.idType" background="#FFF" showIonic="" [ngClass]="this.addpeopleEntity.type=='check'?'pointer':''"></tip>
+  <tip title="共有方式" [selectData]="addpeopleEntity.shareType" background="#FFF" showIonic="" [ngClass]="this.addpeopleEntity.type=='check'?'pointer':''"></tip>
+  <form [formGroup]="form">
+    <ion-list class="myList">
+      <ion-item [ngClass]="this.addpeopleEntity.type=='check'?'pointer':''">
+        <p class="paddingBonttom1">{{addpeopleEntity.RoleName}}名称</p>
+        <input type="text" placeholder="中文名称" class="myInput limit1" formControlName="PersonName" />
+        <div class="errorForm" *ngIf="formErrors.PersonName">{{formErrors.PersonName}}</div>
+      </ion-item>
+      <ion-item [ngClass]="this.addpeopleEntity.type=='check'?'pointer':''">
+        <p class="paddingBonttom1">证件号码</p>
+        <div *ngIf="addpeopleEntity.idType.value =='身份证'">
+          <input type="txt" inputlimit [limit]=18 uppercase=true placeholder="请输入证件号码" class="myInput" [fromCtrlName]="form.controls['PaperNo']"
+            formControlName="PaperNo" />
+          <div class="errorForm" *ngIf="formErrors.PaperNo">{{formErrors.PaperNo}}</div>
+        </div>
+
+        <div *ngIf="addpeopleEntity.idType.value !='身份证'">
+          <input type="txt" placeholder="请输入证件号码" class="myInput" formControlName="PaperNo" />
+        </div>
+      </ion-item>
+      <ion-item [ngClass]="this.addpeopleEntity.type=='check'?'pointer':''">
+        <p class="paddingBonttom1">手机号码</p>
+        <input type="number" inputlimit [limit]=11 placeholder="请输入手机号码" class="myInput" [fromCtrlName]="form.controls['MobileNo']"
+          formControlName="MobileNo" />
+        <div class="errorForm" *ngIf="formErrors.MobileNo">{{formErrors.MobileNo}}</div>
+      </ion-item>
+      <ion-item>
+        <p class="paddingBonttom1">通信地址</p>
+        <input type="text" placeholder="请输入真实有效的通讯地址" class="myInput limit1" formControlName="Address" />
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button ion-button block color="bule" (click)="onClick()" [disabled]="!form.valid">保存</button>
+    </div>
+  </form>
+
+</ion-content>

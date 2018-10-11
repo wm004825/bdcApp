@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>未提交业务</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <tip title="业务类型选择" [selectData]="selectData" showIonic background="#FFF"></tip>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="请输入您要搜索的业务" cancelButtonText="取消" class="mySearchbar"></ion-searchbar>
+  <div padding>
+    <button ion-button block>提交审核</button>
+  </div>
+  <ion-list padding class="borderList">
+    <ion-item *ngFor="let item of CopyBusinessListFromMongo;let index = index;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-9 align-items-start class="left">
+            <div class="space">不动产坐落：{{item.BDCAddress}}</div>
+            <div class="space">面积：{{item.MortgageHouseArea}}</div>
+            <div class="space">义务人：
+              <span *ngFor="let a of  item.RequestPersons | roleName" [ngClass]="a.Authorization==true?'color56b771':'colorff5959'">
+                {{a.PersonName}}<span *ngIf="!a.Authorization && item.Type!='d4-1'">(未认证) </span>
+              </span>
+            </div>
+            <div *ngIf="!item.IsElec" class="colorff5959 space">业务信息未完善，请编辑完善信息</div>
+            <div *ngIf="!item.BDCUnitPaerNo" class="colorff5959 space">尚未提交预告商品房登记</div>
+          </ion-col>
+          <ion-col col-3>
+            <button ion-button block class="minButton" (click)="goAdd('义务人',index)">编辑</button>
+            <button ion-button block color="secondary" class="minButton" *ngIf="item.needToAuth!=0">认证</button>
+            <button ion-button block color="danger" class="minButton" (click)="delete(item)">删除</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <!-- <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-9 align-items-start>
+              <p>不动产坐落：南宁市兴宁区南梧路328号兴宁·大唐果5号楼一层公共架空绿化（单列） </p>
+            </ion-col>
+            <ion-col col-3>
+              <button ion-button block class="minButton">编辑</button>
+              <button ion-button block color="danger" class="minButton">删除</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-9 align-items-start>
+                <p>不动产坐落：南宁市兴宁区南梧路328号兴宁·大唐果5号楼一层公共架空绿化（单列） </p>
+              </ion-col>
+              <ion-col col-3>
+                <button ion-button block class="minButton">编辑</button>
+                <button ion-button block color="danger" class="minButton">删除</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item> -->
+  </ion-list>
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{handleEntity.title}} - {{handleEntity.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bgf2f2f2">
+  <div class="projectName limit1">{{handleEntity.projectName}}</div>
+  <div class=newSubTitle>请先输入您的信息进行数据检验</div>
+  <div [ngSwitch]='handleEntity.projectName' *ngIf="handleEntity.data">
+    <commontype [commonType]="handleEntity.data" *ngSwitchCase="'预购商品房抵押权首次预告登记'"></commontype>
+    <b3type [b3Type]="handleEntity.data" *ngSwitchCase="'预购商品房预告登记'"></b3type>
+    <commontype showObligee='' [commonType]="handleEntity.data" newTitle='权利人' *ngSwitchCase="'抵押权注销登记（抵押权人为金融机构）'"></commontype>
+    <b2type [b2Type]="handleEntity.data" *ngSwitchCase="'新建商品房转移'"></b2type>
+    <b3type [b3Type]="handleEntity.data" *ngSwitchCase="'新建商品房、保障性住房首次登记'"></b3type>
+    <d3type [d3Type]="handleEntity.data" *ngSwitchCase="'房屋在建工程抵押权首次抵押登记'"></d3type>
+    <c2type [c2Type]="handleEntity.data" *ngSwitchCase="'购买新建市场运作房、单位出售全额集资房、危旧房改住房改造的住房转移(网上申请)'"></c2type>
+    <i4type [i4Type]="handleEntity.data" *ngSwitchCase="'换发不动产权证书'"></i4type>
+    <d3type [d3Type]="handleEntity.data" newTitle='预告义务人证件号' *ngSwitchCase="'市场运作房、集资建房、危旧房改住房改造的住房预告登记(网上申请)'"></d3type>
+    <d3type [d3Type]="handleEntity.data" newTitle='预告义务人证件号' *ngSwitchCase="'市场运作房、集资建房、危旧房改住房改造的住房抵押权预告登记(网上申请)'"></d3type>
+    <commontype *ngSwitchDefault [commonType]="handleEntity.data"></commontype>
+  </div>
+
+
+  <div padding class="textCenter">
+    <button ion-button class="padding3em" (click)="goDetails()">下一步</button>
+  </div>
+</ion-content>

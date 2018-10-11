@@ -1,0 +1,7 @@
+page-onlinehandling {
+    .ul50 li{height: 14rem;color: #333333;font-size: 2rem;margin-bottom: 0}; 
+    $map: (1: #ebebeb, 2: #dfe8ed, 3: #d7dfe3, 4: #edf7fd, 5: #f9f9f9, 6: #e1e1e1, 7: #ebeff2);
+    @each $key, $value in $map { 
+        .ul50 li:nth-child(#{$key}){background:$value}
+    }
+}

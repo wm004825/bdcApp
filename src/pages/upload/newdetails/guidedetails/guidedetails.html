@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>业务指南</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="flexCloumn">
+
+  <ion-scroll scrollX="true" scrollY="true" zoom="false" class="flexMain">
+    <div [innerHTML]="guidedetailsEntity.Content" *ngIf="guidedetailsEntity" class="guideTable"></div>
+  </ion-scroll> 
+</ion-content>

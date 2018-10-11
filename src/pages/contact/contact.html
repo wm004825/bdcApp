@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="personal" padding>
+    <ion-row class="row">
+      <ion-col align-self-center col-3>
+        <img block src="assets/imgs/h.png" alt="头像" (click)="goLogin()">
+      </ion-col>
+      <ion-col col-9 padding>
+        <h4 class="title">{{user.name}}（已实名）</h4>
+        <p class="txt">您是系统备案用户</p>
+        <p class="txt"> 您备案的企业名称是：大唐地产</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-list class="myList  personal_list">
+    <button class="item item-icon-left" (click)="goUpdatePassword()" ion-item="" align-self-center >
+      <i class="iconfont icon-klmxiugaimima font36 colorff5959"></i>
+      <font>修改密码</font>
+    </button>
+    <button class="item item-block  item-icon-left" ion-item="">
+      <i class="iconfont icon-biangengshoujihao font36 colorff5959"></i>
+      <font>更换手机号码</font>
+    </button>
+    <button class="item item-block  item-icon-left" ion-item="">
+      <i class="iconfont icon-yijianfankui font36 color36e2d4"></i>
+      <font>意见反馈</font>
+    </button>
+    <button class="item item-block  item-icon-left" ion-item="" (click)="exitLogin()">
+      <i class="iconfont icon-zhuxiao font36 color709ead"></i>
+      <font>注销登入</font>
+    </button>
+  </ion-list>
+</ion-content>

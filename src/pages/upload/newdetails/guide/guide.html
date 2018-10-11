@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>业务指南</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-slides pager class="mySlides">
+
+    <ion-slide>
+      <img src="assets/imgs/banner_bus.png" alt="banner_bus">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/imgs/banner_bus.png" alt="banner_bus">
+    </ion-slide>
+  </ion-slides>
+
+  <tip title="业务指南" ionicColor='#0099d9' background='#FFFFFF'></tip>
+
+  <ion-list class="myList">
+    <ion-item *ngFor="let item of guide" class="item-list item item-icon-left" href="#" (click)="goDetails(item.Id)">
+      <i class="iconfont font40 color0099d9 icon-icon-test"></i>
+      <span>{{item.Name}}</span>
+      <h3>{{item.SubTitle}}</h3>
+    </ion-item>
+  </ion-list>
+
+  <!--上拉刷新 start -->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--上拉刷新 end -->
+</ion-content>

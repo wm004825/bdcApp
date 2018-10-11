@@ -1,0 +1,67 @@
+<tip title="证书类型" [selectData]="data" (onVoted)="onVoted($event);"></tip>
+<!-- 查档的不动产表单 -->
+<ion-list list-ios-header-border-bottom='true' *ngIf="data.value==CurrencyString.bdcqzName" >
+  <ion-item>
+    <div class="flexBox">
+      <div>桂</div>
+      <div class="flex1LeftContent">
+        <input type="number" inputlimit limit=4 in class="myInput" placeholder="请输入年份" value="" [(ngModel)]="data.list[data.index].no" (input)="onInput();" />
+      </div>
+    </div>
+  </ion-item>
+
+  <!-- 个人查档 start -->
+  <ion-item *ngIf="queryIndex==0">
+    <ion-label fixed>选择</ion-label>
+    <ion-select interface="action-sheet" class="w100 textRight" cancelText="取消" [(ngModel)]="data.list[data.index].selectData.value" (ngModelChange)="onchangSelect()">
+      <ion-option *ngFor="let item of data.list[data.index].selectData.list">{{item.Value}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <!-- 个人查档 end -->
+
+  <!-- 机构查档 start -->
+  <ion-item *ngIf="queryIndex==1">
+    <ion-input type="text" [(ngModel)]="CurrencyString.nnsbdcqzName" disabled></ion-input>
+  </ion-item>
+  <!-- 机构查档 end -->
+
+  <ion-item>
+    <div class="flexBox">
+      <div>第</div>
+      <div class="flex1LeftContent">
+        <input type="number"  inputlimit [limit]="data.list[data.index].selectData.list[data.list[data.index].selectData.index].limit" class="myInput" placeholder="请输入号码" [(ngModel)]="data.list[data.index].code" (input)="onInput();"/>
+      </div>
+      <div>号</div>
+    </div>
+  </ion-item>
+</ion-list>
+
+<ion-list list-ios-header-border-bottom='true' *ngIf="data.value==CurrencyString.yfqzName"> 
+  <ion-item>
+    <ion-label fixed>选择</ion-label>
+    <ion-select interface="action-sheet" class="w100 textRight" cancelText="取消" [(ngModel)]="data.list[data.index].selectData.value" (ngModelChange)="onchangSelect()">
+      <ion-option *ngFor="let item of data.list[data.index].selectData.list" >{{item.Value}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item class="">
+    <div class="flexBox">
+      <div>第</div>
+      <div class="flex1LeftContent">
+        <input type="number" inputlimit [limit]="data.list[data.index].selectData.list[data.list[data.index].selectData.index].limit" class="myInput" placeholder="请输入号码" [(ngModel)]="data.list[data.index].code" (input)="onInput();"/>
+      </div>
+      <div>号</div>
+    </div>
+  </ion-item>
+</ion-list>
+
+<ion-list list-ios-header-border-bottom='true' *ngIf="data.value==CurrencyString.qtName">
+  <ion-item>
+    <input type="text" class="myInput paddingLeft0" placeholder="请输入号码" [(ngModel)]="data.list[data.index].txt" (input)="onInput();"/>
+  </ion-item> 
+</ion-list>
+<!-- 查档的不动产表单 -->
+
+<ion-item padding-left>
+  <p color="light">示例：桂2018南宁市不动产权第123456号</p>
+</ion-item>
+{{queryIsSubmit}}

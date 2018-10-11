@@ -1,0 +1,11 @@
+<div *ngFor="let item of RequestPersons;let i=index;">
+    <ion-item *ngIf="item.RoleName == value" (click)="goClick(i);">
+        <p>{{value}}：{{item.PersonName}}</p>
+        <p>证件号码：{{item.PaperNo}}</p>
+        <ion-avatar item-end class="flexBox">
+            <div class="flex1Content">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+        </ion-avatar>
+    </ion-item>
+</div>

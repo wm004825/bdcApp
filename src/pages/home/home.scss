@@ -1,0 +1,13 @@
+page-home { 
+    ion-content.content{background-color: #f2f2f2;}
+    .box{background: white;margin-bottom: 30px; box-shadow: 0 2px 0 #dddddc,0 4px 0 #eaeae9}
+
+    .homeNav{ li{.iconfont{font-size: 4.5rem} }} 
+    $map: (1: #ff635b, 2: #ffa200, 3: #5bb4da, 4: #e07d22, 5: #66cccc, 6: #ac7603);
+    @each $key, $value in $map { .homeNav{  li:nth-child(#{$key}){.iconfont{color: $value}}} }
+    .boxList li{margin-bottom: 2.5rem};
+    [padding] h1:first-child, [padding] h2:first-child, [padding] h3:first-child, [padding] h4:first-child, [padding] h5:first-child, [padding] h6:first-child{margin-top: 0}
+    .navBox{text-align: center}
+    .navBox img{max-width: 100%;display: block;margin: 1rem auto;}
+}
+                                                              

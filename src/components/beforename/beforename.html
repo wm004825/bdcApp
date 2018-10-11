@@ -1,0 +1,56 @@
+<ion-list>
+  <div class="list-div" padding-top (click)="addFamily()" *ngIf="queryFamily==0">
+    <div class="txt">+&nbsp;&nbsp;&nbsp;添加家庭成员(含本人)</div>
+  </div>
+
+
+  <form [formGroup]="form" test autocomplete="off" class="fromList">
+    <div formArrayName="data">
+      <div *ngFor="let form of form.controls.data.controls; let i=index;" [formGroupName]="i" class="border0">
+        <ion-item>
+          <ion-input type="text" [disabled]="query==0" inputlimit [limit]=10 [fromCtrlName]="form.controls['userName']"
+            placeholder="查询人姓名" formControlName="userName"></ion-input>
+        </ion-item>
+        <div class="errorForm" *ngIf="formErrors.userName">{{formErrors.userName}}</div>
+        <ion-item>
+          <div class="flexBox">
+            <div class="flex1LeftContent">
+
+              <input class="iteminput w100 border0 uppercase noBackground" type="text" *ngIf="query==0" disabled
+                inputlimit [limit]=18 [fromCtrlName]="form.controls['personNo']" uppercase=true placeholder="请输入身份证号码"
+                formControlName="personNo" />
+
+              <input class="iteminput w100 border0 uppercase noBackground" type="text" *ngIf="query==1" inputlimit
+                [limit]=18 [fromCtrlName]="form.controls['personNo']" uppercase=true placeholder="请输入身份证号码"
+                formControlName="personNo" />
+            </div>
+
+
+            <div class="flexContent" *ngIf="queryFamily==0">
+              <span class="minButton bg56b771" (click)="deleteFamilyPersonal(i)" *ngIf="i!=0">删除</span>
+              <span class="minButton bgfe5f34" (click)="familyPersonalQuery(i)" *ngIf="!form.value.auth">认证</span>
+            </div>
+          </div>
+          <div class="errorForm" *ngIf="formErrors.personNo">{{formErrors.personNo}}</div>
+        </ion-item>
+
+        <div formArrayName="arr">
+          <div *ngFor="let arr of form.controls['arr'].controls; let a=index;" [formGroupName]="a">
+            <ion-item>
+              <div class="flexBox">
+                <div class="flex1LeftContent">
+                  <input class="iteminput w100 border0 noBackground" type="text" block placeholder="曾用名"
+                    formControlName="name" />
+                </div>
+                <div class="flexContent">
+                  <i class="iconfont font24" (click)="newForm(i,a)" *ngIf="!arr.value.isAdd">&#xe613;</i>
+                  <i class="iconfont font24" (click)="removeForm(i,a)" *ngIf="arr.value.isAdd">&#xe6b7;</i>
+                </div>
+              </div>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</ion-list>

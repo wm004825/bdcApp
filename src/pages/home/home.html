@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <button ion-button block (click)="goTest()">测试</button>
+  <img src="assets/imgs/banner.png" alt="" class="width100">
+  <div padding class="box">
+    <ul class="ul33 homeNav">
+      <li *ngFor="let item of navList;let index=index" (click)="clickNav(index)">
+        <i class="iconfont" [ngClass]="item.ionfont"></i>
+        <p>{{item.txt}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <div padding class="box">
+    <ul class="ul50 boxList">
+      <li class="flexBox" *ngFor="let item of boxList;let index =index" (click)="clickBox(index)">
+        <div class="flex1LeftContent marginRight1">
+          <h2 class="font16 inlineBlock">{{item.title}}</h2>
+          <br/>
+          <span class="font12">{{item.txt}}</span>
+        </div>
+        <div class="flexContent marginRight1">
+          <img src="{{item.img}}" class="width5">
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <tip background="#FFFFFF" title='最新资讯' moreValue="更多" (goMore)="goMore()"></tip>
+    <ion-list class="myList">
+      <ion-item *ngFor="let item of NewList" class="navBox">
+        <div class="limit1">{{item.Title}}</div>
+        <img src="{{item.TitleImg}}" />
+        <div class="limit1">{{item.SubTile}}</div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

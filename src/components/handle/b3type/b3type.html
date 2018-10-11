@@ -1,0 +1,13 @@
+<div class="bgfff">
+  <ion-list class="newList">
+
+    <ion-item>
+        权籍调查编号
+    </ion-item>
+
+    <ion-item>
+      <input type="txt" inputlimit limit=12 in class="w100 border0" placeholder="权籍调查成果条件上的12位编号" [(ngModel)]="b3Type.houseno" />
+    </ion-item>
+  </ion-list>
+  <tip title="预告义务人证件号" [selectData]='b3Type.company' background='#fff' ngif="isCompany" (onVoted)="onVoted()"></tip>
+</div>

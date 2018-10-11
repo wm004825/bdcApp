@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>查档服务-个人查档</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bgf2f2f2" padding>
+  <ion-segment [(ngModel)]="initString.pet" (ionChange)="petChanged()" class="myTabs marginBottom3">
+    <ion-segment-button value="{{item.name}}" *ngFor="let item of initString.tabA" [ngClass]="{active:initString.pet==item.name}">
+      {{item.name}}</ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="initString.pet">
+    <ion-list *ngSwitchCase="initString.mxdcxName">
+      <ion-card class="myCard">
+        <tip title="{{initString.grdcxName}}"></tip>
+        <beforename [form]="infoForm" [query]=0 [formErrors]="formErrors"></beforename>
+        <div class="textCenter marginBottom1">
+          <button ion-button class="padding3em" (click)="perSonQuery()">{{initString.cxbrName}}</button>
+        </div>
+      </ion-card>
+      <ion-card class="myCard">
+        <tip title="{{initString.jtdcxName}}"></tip>
+        <beforename [form]="familyForm" [query]=0 [queryFamily]=0 [formErrors]="formErrors"></beforename>
+        <div class="textCenter marginBottom1">
+          <button ion-button class="padding3em" (click)="familyQuery()">{{initString.cxjtcyName}}</button>
+        </div>
+      </ion-card>
+      <button ion-button block class="marginTop2" (click)="queryHistory()"> {{initString.cdjlName}} </button>
+    </ion-list>
+    <ion-list *ngSwitchCase="initString.gkdcxName">
+      <ion-card class="userCardBox">
+        <ion-card class="userCard font16 colorfff" padding>
+          <div class="marginBottom2">姓名:{{user.personName}}</div>
+          <div>身份证:{{user.personNo}}</div>
+        </ion-card>
+      </ion-card>
+
+      <ion-card class="myCard">
+        <querypublic [data]="queryinformationData" [queryIndex]=0 [query]="query"></querypublic>
+      </ion-card>
+
+      <button ion-button block class="marginTop2" (click)="openQuery()">{{initString.cxgkdName}}</button>
+      <button ion-button block class="marginTop2" (click)="queryHistory()"> {{initString.cdjlName}} </button>
+    </ion-list>
+  </div>
+</ion-content>

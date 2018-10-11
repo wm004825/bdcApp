@@ -1,0 +1,18 @@
+<div class="flexBox title" padding [ngStyle]="{'background':background}">
+  <div class="flexLeftContent">
+    <i class="iconfont font24 block" [ngStyle]="{'color':ionicColor}" *ngIf="showIonic">&#xe790;</i>
+    <div class="txt">{{title}}</div>
+  </div>
+  <div class="flex1 relative" *ngIf="selectData">
+    <ion-select interface="action-sheet" class="w100 textRight" [ngStyle]="{'color':selectColor}" cancelText="取消" [(ngModel)]="selectData.value"
+      (ngModelChange)="onchangSelect($event)">
+      <ion-option *ngFor="let item of selectData.list">{{item.Value}}</ion-option>
+    </ion-select>
+  </div>
+
+  <div class="flex1RightContent  colorff7f00" (click)='onClick()' *ngIf="moreValue">
+    <div class="font16">{{moreValue}}</div>
+    <i class="iconfont block"  [ngStyle]="{'color':moreIonicColor}">&#xe7b7;</i>
+  </div>
+
+</div>

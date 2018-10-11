@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{handleEntity.title}} - {{handleEntity.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bgf2f2f2">
+  <div *ngFor="let item of handleEntity.data" (click)="goDetails(item.ProjectName)">
+    <div *ngIf="item.ProjectTag == handleEntity.name">
+      <ion-card class="myCard">
+        <div class="box flexBox">
+          <div class="flex1LeftContent marginLeft2 marginRight2">{{item.ProjectName}}</div>
+          <div class="flexContent">
+            <i  class="onFont iconfont icon-zhuanyilei" > </i>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+</ion-content>

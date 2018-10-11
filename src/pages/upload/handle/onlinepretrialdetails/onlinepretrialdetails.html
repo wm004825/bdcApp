@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{handleEntity.title}} - {{handleEntity.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="projectName">{{handleEntity.projectName}}</div>
+  <div class="newSubTitle">不动产信息</div>
+  <div class="newSubTitle">不动产信息</div>
+  <ion-list class="myList">
+    <ion-item>
+      <p class="paddingBonttom1">不动产单元号</p>
+      <p>{{getEmptyBaseInfo.BDCUnitNo}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1">不动产权证号</p>
+      <p>{{getEmptyBaseInfo.BDCUnitPaerNo}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1">不动产坐落</p>
+      <p>{{getEmptyBaseInfo.BDCAddress}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1">抵押房屋面积(平方米)</p>
+      <p>{{getEmptyBaseInfo.MortgageHouseArea}}</p>
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1">担保范围</p>
+      <p>{{getEmptyBaseInfo.SuretyType}}</p>
+    </ion-item>
+    <ion-item>
+      <p class="paddingBonttom1">抵押合同编号</p>
+      <input type="text" placeholder="请输入..." class="myInput" [(ngModel)]="getEmptyBaseInfo.MortgageInfo.MortgageDealNo" />
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1"><b class="colorff5959">*</b>&nbsp;债权金额(万元)</p>
+      <input type="number" placeholder="请输入..." class="myInput" [(ngModel)]="getEmptyBaseInfo.MortgageInfo.BorrowMoney" />
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1"><b class="colorff5959">*</b>&nbsp;抵押物价值(万元)</p>
+      <input type="number" placeholder="请输入..." class="myInput" [(ngModel)]="getEmptyBaseInfo.MortgageInfo.EvaluationMoney" />
+    </ion-item>
+    <tip title="贷款类别" *ngIf="loanType" [selectData]='loanType' background='#fff'></tip>
+    <ion-item class="myDate">
+      <ion-label>抵押合同签订日期</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" max="2080-12-31" pickerFormat="YYYY-MM-DD" [(ngModel)]="getEmptyBaseInfo.MortgageDealDate"
+        cancelText="取消" doneText="确认"></ion-datetime>
+    </ion-item>
+    <ion-item class="myDate">
+      <ion-label>债务起始日期</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" max="2080-12-31" pickerFormat="YYYY-MM-DD" [(ngModel)]="getEmptyBaseInfo.MortgageInfo.LoanStart"
+        cancelText="取消" doneText="确认"></ion-datetime>
+    </ion-item>
+
+    <ion-item class="myDate">
+      <ion-label>债务终止日期</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" max="2080-12-31" pickerFormat="YYYY-MM-DD" [(ngModel)]="getEmptyBaseInfo.MortgageInfo.LoanDays"
+        cancelText="取消" doneText="确认"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <p class="paddingBonttom1"><b class="colorff5959">*</b>&nbsp;成交价</p>
+      <input type="number" placeholder="请输入..." class="myInput" [(ngModel)]="getEmptyBaseInfo.MortgageInfo.SuccessMoney" />
+    </ion-item>
+
+
+    <newtip (goMore)="goAdd('权利人');"></newtip>
+    <peoplebox *ngIf="getEmptyBaseInfo.RequestPersons.length>0" [RequestPersons]="getEmptyBaseInfo.RequestPersons"
+      (goMore)="goDetails($event,'权利人')"></peoplebox>
+    <newtip (goMore)="goAdd('义务人');" title="义务人信息"></newtip>
+    <peoplebox *ngIf="getEmptyBaseInfo.RequestPersons.length>0" [RequestPersons]="getEmptyBaseInfo.RequestPersons"
+      value='义务人' (goMore)="goDetails($event,'义务人')"></peoplebox>
+  </ion-list>
+  <div padding>
+    <button ion-button block class="padding3em" (click)="goSubmit()">提交至业务列表</button>
+  </div>
+</ion-content>

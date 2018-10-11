@@ -1,0 +1,21 @@
+<ion-list>
+  <ion-item>
+    <div class="flexBox">
+      <div>邕房权证第</div>
+      <div class="flex1LeftContent">
+        <input type="number" inputlimit limit=12 in class="myInput" placeholder="" [(ngModel)]="i4Type.code" (input)="onInput();"/>
+      </div>
+      <div>号</div>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <div class="flexBox">
+      <div>权利人</div>
+      <div class="flex1LeftContent">
+        <input type="text" inputlimit limit=16 in class="myInput" placeholder="请输入权利人姓名" [(ngModel)]="i4Type.houseowner" />
+      </div>
+    </div>
+  </ion-item>
+
+</ion-list>

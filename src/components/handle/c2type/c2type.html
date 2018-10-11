@@ -1,0 +1,44 @@
+<div class="bgfff">
+  <ion-segment [(ngModel)]="c2Type.pet" class="myTabs">
+    <ion-segment-button value="{{item.name}}" *ngFor="let item of c2Type.tab" [ngClass]="{active:c2Type.pet==item.name}">{{item.name}}</ion-segment-button>
+  </ion-segment>
+
+
+  <!-- 个人查档和机构查档  start-->
+  <div [ngSwitch]='c2Type.pet'>
+    <ion-list *ngSwitchCase="'首次调查'" class="newList">
+      <ion-item>
+        首次登记业务号
+      </ion-item>
+
+      <ion-item>
+        <input type="txt" inputlimit limit=10 class="w100 border0" placeholder="办理新建商品房首次登记的不动产登记业务号" />
+      </ion-item>
+
+      <ion-item>
+        证件号
+      </ion-item>
+
+      <ion-item>
+        <input type="txt" class="w100 border0" placeholder="开发企业的社会统一信用代码或组织机构代码" />
+      </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'权籍调查'" class="newList">
+      <ion-item>
+        权籍调查编号
+      </ion-item>
+
+      <ion-item>
+        <input type="txt" inputlimit limit=12 class="w100 border0" placeholder="委托转移登记权籍调查的权籍调查成果表上的12位业务编号" />
+      </ion-item>
+
+      <ion-item>
+        证件号
+      </ion-item>
+
+      <ion-item>
+        <input type="txt" inputlimit limit=12 class="w100 border0" placeholder="委托权籍调查的开发企业的社会统一信用代码或组织机构代码" />
+      </ion-item>
+    </ion-list>
+  </div>
+</div>

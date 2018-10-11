@@ -1,0 +1,7 @@
+<form [formGroup]="form">
+  <ion-item>
+    <ion-label fixed>验证码</ion-label>
+    <ion-input type="text" inputlimit [limit]=6 [fromCtrlName]="form.controls['validCode']" placeholder="请输入验证码" formControlName="validCode"></ion-input>
+    <button color="custom" item-right ion-button class="button-bule" (click)="getCode()" [disabled]="(form.get('phoneNumber').invalid || !verifyCode.disable)">{{verifyCode.verifyCodeTips}}</button>
+  </ion-item>
+</form>

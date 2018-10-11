@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{initString.cycdName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bgf2f2f2" padding>
+  <ion-list>
+    <ion-card class="userCardBox">
+      <ion-card class="userCard font16 colorfff" padding>
+        <div class="marginBottom2">姓名:{{user.personName}}</div>
+        <div>身份证:{{user.personNo}}</div>
+      </ion-card>
+    </ion-card>
+
+    <div *ngIf="checkItem" class="listitem">
+      <ion-list *ngIf="checkItem.length!=0">
+        <ion-item *ngFor="let item of checkItem | slice:0:1;">
+          <div class="flexBox">
+            <div class="flex1">
+              <p>类型：{{item.Message}}</p>
+              <p>查询码：{{item.IdentityCode}}</p>
+              <p>查询时间：{{item.CreateDateTime}}</p>
+            </div>
+            <div class="flexContent">
+              <button ion-button color="secondary">点击查看</button>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+      <history [txt]="initString.cycdName" *ngIf="checkItem.length==0"></history>
+    </div>
+
+    <button ion-button block class="marginTop2" (click)="openQuery()">扫码查验</button>
+    <button ion-button block class="marginTop2" (click)="queryHistory()"> {{initString.cdjlName}} </button>
+  </ion-list>
+
+</ion-content>

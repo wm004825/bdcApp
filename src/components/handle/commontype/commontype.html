@@ -1,0 +1,90 @@
+<tip title="证书类型" [selectData]='commonType.selectData' background='#fff' (onVoted)="onVoted()"></tip>
+
+<ion-list>
+  <div *ngIf="commonType.selectData.value == '不动产证明' || commonType.selectData.value == '不动产权证'">
+    <ion-item>
+      <div class="flexBox">
+        <div>桂</div>
+        <div class="flex1LeftContent">
+          <input type="number" inputlimit limit=4 in class="myInput" placeholder="请输入年份" value="" [(ngModel)]="commonType.no" (input)="onInput();"
+          />
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="flexBox">
+        <div>第</div>
+        <div class="flex1LeftContent">
+          <input type="number" inputlimit [limit]=7 class="myInput" placeholder="请输入号码" [(ngModel)]="commonType.code" (input)="onInput();"
+          />
+        </div>
+        <div>号</div>
+      </div>
+    </ion-item>
+  </div>
+
+  <div *ngIf="commonType.selectData.value == '邕房预'">
+    <ion-item>
+      <div class="flexBox">
+        <div>邕房预字第</div>
+        <div class="flex1LeftContent">
+          <input type="number" inputlimit limit=7 in class="myInput" placeholder="" [(ngModel)]="commonType.code" (input)="onInput();"
+          />
+        </div>
+        <div>号</div>
+      </div>
+    </ion-item>
+  </div>
+
+  <div *ngIf="commonType.selectData.value == '邕房他字第'">
+    <ion-item>
+      <div class="flexBox">
+        <div>邕房他字第</div>
+        <div class="flex1LeftContent">
+          <input type="number" inputlimit limit=12 in class="myInput" placeholder="" [(ngModel)]="commonType.code" (input)="onInput();"
+          />
+        </div>
+        <div>号</div>
+      </div>
+    </ion-item>
+  </div>
+
+  <div *ngIf="commonType.selectData.value == '邕房预字第'">
+    <ion-item>
+      <div class="flexBox">
+        <div>邕房预字第</div>
+        <div class="flex1LeftContent">
+          <input type="number" inputlimit limit=12 in class="myInput" placeholder="" [(ngModel)]="commonType.code" (input)="onInput();"
+          />
+        </div>
+        <div>号</div>
+      </div>
+    </ion-item>
+  </div>
+
+
+  <div *ngIf="commonType.selectData.value == '邕房权证'">
+    <ion-item>
+      <div class="flexBox">
+        <div>邕房权证第</div>
+        <div class="flex1LeftContent">
+          <input type="number" inputlimit limit=12 in class="myInput" placeholder="" [(ngModel)]="commonType.code" (input)="onInput();"
+          />
+        </div>
+        <div>号</div>
+      </div>
+    </ion-item>
+  </div>
+  <div *ngIf="showObligee">
+    <ion-item>
+      <div class="flexBox">
+        <div>权利人</div>
+        <div class="flex1LeftContent">
+          <input type="text" inputlimit limit=16 in class="myInput" placeholder="请输入权利人姓名" [(ngModel)]="commonType.houseowner" />
+        </div>
+      </div>
+    </ion-item>
+  </div>
+</ion-list>
+<tip title="{{newTitle}}" *ngIf="isCompany" [selectData]='commonType.company' background='#fff' (onVoted)="onVoted1()"></tip>

@@ -1,0 +1,7 @@
+{
+  "name": "bdcApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

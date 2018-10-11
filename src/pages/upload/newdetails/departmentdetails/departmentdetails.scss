@@ -1,0 +1,5 @@
+page-departmentdetails {
+    font-size: 1.5rem; 
+    .title{font-weight: 600;text-align: center}
+    .bos::before{content:''; margin-right: 5px;border-left:3px solid  #ff7e00;-webkit-box-pack: center;-moz-box-pack: center;-ms-box-pack: center;-o-box-pack: center;box-pack: center;-webkit-box-align: center;-moz-box-align: center;-ms-box-align: center;-o-box-align: center;box-align: center;display: -webkit-box;display: -moz-box;display: -ms-box;display: -o-box;}
+}

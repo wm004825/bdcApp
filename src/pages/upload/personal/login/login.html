@@ -1,0 +1,55 @@
+<ion-header> 
+ 
+  <ion-navbar hideBackButton="true">
+      <ion-buttons left>
+        <button ion-button icon-only (click)="goBack()">
+          <ion-icon ios="ios-arrow-back" class="flexContent"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>用户登陆</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="login">
+  <form [formGroup]="loginForm" autocomplete="off">
+    <div class="list card log">
+      <div class="item item-image">
+        <img src="assets/imgs/yongyideng.png">
+      </div>
+    </div>
+    <div class="content has-header">
+      <div class="list">
+        <div class="flexBox">
+          <div class="flexLeftContent">
+            <i class="iconfont">&#xe605;</i>
+          </div>
+          <div class="flexRightContent flex1W100">
+            <input type="number" placeholder="请输入手机号码" class="form-control" formControlName="userName">
+          </div> 
+        </div>
+        <div class="errorForm" *ngIf="formErrors.userName">{{formErrors.userName}}</div>
+        <div class="flexBox">
+          <div class="flexLeftContent">
+            <i class="iconfont">&#xe602;</i>
+          </div>
+          <div class="flexRightContent flex1W100">
+            <input type="password" placeholder="请输入登录密码" class="form-control" formControlName="passWord">
+          </div>
+        </div>
+        <div class="errorForm" *ngIf="formErrors.passWord">{{formErrors.passWord}}</div>
+      </div>
+      <div class="operate">
+        <button ion-button block color="bule" (click)="onLogin()" [disabled]="!loginForm.valid">登录</button>
+        <button ion-button block color="bule" (click)="onRegister()">注册</button>
+        <button ion-button block color="bule" (click)="goUpdatePassword()">重置密码</button>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-image">
+        <img src="assets/imgs/footlogo.png">
+      </div>
+    </div>
+  </form>
+</ion-content>

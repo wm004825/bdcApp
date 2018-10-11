@@ -1,0 +1,47 @@
+<ion-header class="header header-ios">
+  <ion-navbar class="toolbar toolbar-ios statusbar-padding">
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="from" autocomplete="off">
+    <ion-item>
+      <ion-label fixed>姓 名</ion-label>
+      <ion-input  type="text" placeholder="请输入中文姓名" formControlName="userName"></ion-input>
+    </ion-item>
+    <div class="errorForm" *ngIf="formErrors.userName">{{formErrors.userName}}</div>
+    <ion-item>
+      <ion-label fixed>身份证号</ion-label>
+      <ion-input type="text" inputlimit [limit]=18 [uppercase]=true [fromCtrlName]="from.controls['personNo']" placeholder="请输入身份证号码" formControlName="personNo"></ion-input>
+    </ion-item>
+    <div class="errorForm" *ngIf="formErrors.personNo">{{formErrors.personNo}}</div>
+    <ion-item>
+      <ion-label fixed>手 机 号</ion-label>
+      <ion-input type="tel" inputlimit [limit]=11 [uppercase]=true [fromCtrlName]="from.controls['phoneNumber']"  placeholder="请输入11位手机号码" formControlName="phoneNumber"></ion-input>
+    </ion-item>
+    <div class="errorForm" *ngIf="formErrors.phoneNumber">{{formErrors.phoneNumber}}</div>
+    <ion-item>
+      <ion-label fixed>密码</ion-label>
+      <ion-input type="password" placeholder="请输入至少6位密码" formControlName="passWord"></ion-input>
+    </ion-item>
+    <div class="errorForm" *ngIf="formErrors.passWord">{{formErrors.passWord}}</div>
+    <ion-item>
+      <ion-label fixed>确认密码</ion-label>
+      <ion-input type="password" placeholder="请再次输入密码" formControlName="conFirmPassWord"></ion-input>
+    </ion-item>
+    <div class="errorForm" *ngIf="(from.get('conFirmPassWord').hasError('match')) && from.get('conFirmPassWord').value">{{validationMessages.conFirmPassWord.match}}</div>
+    <verification-code [verifyCode]=verifyCode [form]=from (onVoted)="onVoted($event);"></verification-code>
+    <div class="errorForm" *ngIf="formErrors.validCode">{{formErrors.validCode}}</div>
+    <div class="marginTop1 textCenter" >
+      <ion-checkbox formControlName="isCheck" (click)="getProtocol()" [checked]="from.get('isCheck').value"  class="noOpacity"></ion-checkbox>
+      <span class="vertical5 colorff5959">我完全接受承诺书中的所有条款</span>
+    </div>   
+    <div class="errorForm" *ngIf="formErrors.isCheck">{{formErrors.isCheck}}</div> 
+    <button ion-button block color="bule" [disabled]="!from.valid">注册</button>
+    <div padding text-center>
+      <button ion-button color="primary" outline (click)="gotoLogin()">已有账号？登录</button>
+    </div>
+  </form>
+</ion-content>
