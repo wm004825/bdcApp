@@ -74,7 +74,7 @@ export class HomePage {
 
         break;
       case 3:
-      this.navCtrl.push(MylistPage);
+        this.navCtrl.push(MylistPage);
         break;
       case 4:
 
@@ -128,8 +128,12 @@ export class HomePage {
     this.tabs.select(1);
   }
 
-  goTest(){
+  goTest() {
     this.navCtrl.push(UnsubmittedPage);
   }
+
+  // defaultImage = 'https://www.placecage.com/1000/1000';
+  img = 'https://bdcapppractice.nngeo.com/image/gd1.jpg';
+  offset = 100;
 
 }

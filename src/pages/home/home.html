@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content #container>
   <button ion-button block (click)="goTest()">测试</button>
   <img src="assets/imgs/banner.png" imageViewer="assets/imgs/banner.png" alt="" class="width100">
   <div padding class="box">
@@ -21,7 +21,7 @@
       <li class="flexBox" *ngFor="let item of boxList;let index =index" (click)="clickBox(index)">
         <div class="flex1LeftContent marginRight1">
           <h2 class="font16 inlineBlock">{{item.title}}</h2>
-          <br/>
+          <br />
           <span class="font12">{{item.txt}}</span>
         </div>
         <div class="flexContent marginRight1">
@@ -30,16 +30,24 @@
       </li>
     </ul>
   </div>
-
+ 
+  <!-- 
+    滑动加载图片 懒加载
+    defaultImage = "默认图片"
+    lazyLoad = "加载的图片"
+    scrollObservable = "滑动"
+    offset = 动画的时间   
+  -->
   <div class="box">
     <tip background="#FFFFFF" title='最新资讯' moreValue="更多" (goMore)="goMore()"></tip>
     <ion-list class="myList">
       <ion-item *ngFor="let item of NewList" class="navBox">
         <div class="limit1">{{item.Title}}</div>
-        <img src="{{item.TitleImg}}" />
+        <img defaultimage   [lazyLoad]="item.TitleImg"  [scrollObservable]="container.ionScroll"/>
         <div class="limit1">{{item.SubTile}}</div>
       </ion-item>
     </ion-list>
-  </div> 
+  </div>
  
+
 </ion-content>
