@@ -4,8 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content #container>
-  <button ion-button block (click)="goTest()">测试</button>
+<ion-content #container> 
   <img src="assets/imgs/banner.png" imageViewer="assets/imgs/banner.png" alt="" class="width100">
   <div padding class="box">
     <ul class="ul33 homeNav">
@@ -37,13 +36,16 @@
     lazyLoad = "加载的图片"
     scrollObservable = "滑动"
     offset = 动画的时间   
+
+    // 图片预览
+    imageViewer="图片"
   -->
   <div class="box">
     <tip background="#FFFFFF" title='最新资讯' moreValue="更多" (goMore)="goMore()"></tip>
     <ion-list class="myList">
       <ion-item *ngFor="let item of NewList" class="navBox">
         <div class="limit1">{{item.Title}}</div>
-        <img defaultimage   [lazyLoad]="item.TitleImg"  [scrollObservable]="container.ionScroll"/>
+        <img defaultimage  imageViewer="{{item.TitleImg}}" [lazyLoad]="item.TitleImg"  [scrollObservable]="container.ionScroll"/>
         <div class="limit1">{{item.SubTile}}</div>
       </ion-item>
     </ion-list>
