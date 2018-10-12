@@ -20,7 +20,7 @@ import { HttpInterceptorServe } from './../infrastructure/http.interceptor';
 /** http拦截器和页面拦截器end */
 import { PipesModule } from '../pipes/pipes.module';
 import { API_URL } from './../infrastructure/host.address';
-import { ComponentsModule } from './../components/components.module';
+import { ComponentsModule } from './../components/components.module'; 
 
 /*** 页面模块start */
 import { LoginPage } from './../pages/upload/personal/login/login';
@@ -50,8 +50,6 @@ import { AddpeoplePageModule } from './../pages/upload/handle/addpeople/addpeopl
 import { MylistPageModule } from './../pages/upload/business/mylist/mylist.module';
 import { UnsubmittedPageModule } from './../pages/upload/business/unsubmitted/unsubmitted.module';
 
-
-
 /*** 页面模块end */
 
 
@@ -63,7 +61,7 @@ import { UnsubmittedPageModule } from './../pages/upload/business/unsubmitted/un
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpClientModule,  
     HomePageModel,
     AboutPageModel,
     ContactPageModel,
@@ -88,7 +86,7 @@ import { UnsubmittedPageModule } from './../pages/upload/business/unsubmitted/un
     OnlineverificationPageModule,
     AddpeoplePageModule,
     MylistPageModule,
-    UnsubmittedPageModule,
+    UnsubmittedPageModule, 
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回', iconMode: 'ios',//安卓icon强制使用ios的icon以及样式
       mode: 'ios',//样式强制使用ios样式
@@ -118,7 +116,7 @@ import { UnsubmittedPageModule } from './../pages/upload/business/unsubmitted/un
     StatusBar,
     SplashScreen,
     AppService,
-    QueryForm,
+    QueryForm, 
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     {
       provide: API_URL,

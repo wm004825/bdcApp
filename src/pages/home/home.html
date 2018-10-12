@@ -6,7 +6,7 @@
 
 <ion-content>
   <button ion-button block (click)="goTest()">测试</button>
-  <img src="assets/imgs/banner.png" alt="" class="width100">
+  <img src="assets/imgs/banner.png" imageViewer="assets/imgs/banner.png" alt="" class="width100">
   <div padding class="box">
     <ul class="ul33 homeNav">
       <li *ngFor="let item of navList;let index=index" (click)="clickNav(index)">
@@ -40,5 +40,6 @@
         <div class="limit1">{{item.SubTile}}</div>
       </ion-item>
     </ion-list>
-  </div>
+  </div> 
+ 
 </ion-content>
